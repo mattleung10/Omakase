@@ -1,7 +1,11 @@
 # Omakase
 
-<img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/194/952/datas/gallery.jpg" width="375" height="250"/> <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/195/377/datas/gallery.jpg" width="150" height="250"/> <img src="https://i.imgur.com/uuLR3Wj.png" width="150" height="250"/>
+<img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/194/952/datas/gallery.jpg" width="375" height="250"/> <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/195/377/datas/gallery.jpg" width="130" height="250"/> <img src="https://i.imgur.com/uuLR3Wj.png" width="150" height="250"/>
 <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/195/341/datas/gallery.jpg" width="130" height="250"/>
+
+[![Image Link to Pitch Video](https://img.youtube.com/vi/ehMYADP1Ms8/0.jpg)](https://www.youtube.com/watch?v=ehMYADP1Ms8)
+
+(see attached image link to video)
 
 This repository was created as part of our submission for the HackThe6ix 2020 hackathon. It received MLH's Best Use of Google Cloud prize for its exemplary use of the Google Cloud Vision API. 
 
@@ -11,14 +15,14 @@ On numerous occasions, we have each found ourselves staring blankly into the fri
 What It Does
 
 Omakase recommends recipes based on the food that is in your fridge right now.
-What We Learned
+
+## What We Learned
 
 Most of the members in our group were inexperienced in mobile app development and backend. Through this hackathon, we learned a lot of new skills in Kotlin, HTTP requests, setting up a server, and more.
 
 ## How We Built It
 
 We started with an Android application with access to the user’s phone camera. This app was created using Kotlin and XML. Android’s ViewModel Architecture and the X library were used. This application uses an HTTP PUT request to send the image to a Heroku server through a Flask web application. This server then leverages machine learning and food recognition from the Google Cloud Vision API to split the image up into multiple regions of interest. These images were then fed into the API again, to classify the objects in them into specific ingredients, while circumventing the API’s imposed query limits for ingredient recognition. We split up the image by shelves using an algorithm to detect more objects. A list of acceptable ingredients was obtained. Each ingredient was mapped to a numerical ID and a set of recipes for that ingredient was obtained. We then algorithmically intersected each set of recipes to get a final set of recipes that used the majority of the ingredients. These were then passed back to the phone through HTTP.
-Challenges You Faced
 
 Our largest challenge came from creating a server and integrating the API endpoints for our Android app. We also had a challenge with the Google Vision API since it is only able to detect 10 objects at a time. To move past this limitation, we found a way to segment the fridge into its individual shelves. Each of these shelves were analysed one at a time, often increasing the number of potential ingredients by a factor of 4-5x. Configuring the Heroku server was also difficult.
 Built With
